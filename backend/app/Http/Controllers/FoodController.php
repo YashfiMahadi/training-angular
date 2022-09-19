@@ -19,7 +19,7 @@ class FoodController extends Controller
         $foods = Food::orderBy('id', 'desc')->get();
 
         $data = [
-            "data" => $foods
+            "foods" => $foods
         ];
 
         return Response::json($data, 200);

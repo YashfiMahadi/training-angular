@@ -23,4 +23,4 @@ Route::get('/foods', [FoodController::class, 'index']);
 Route::get('/foods/{id}/show', [FoodController::class, 'show']);
 Route::post('/foods/store', [FoodController::class, 'store']);
 Route::put('/foods/{id}/update', [FoodController::class, 'update']);
-Route::delete('/foods/{id}/delete', [FoodController::class, 'delete']);
+Route::delete('/foods/{id}/delete', [FoodController::class, 'destroy']);
