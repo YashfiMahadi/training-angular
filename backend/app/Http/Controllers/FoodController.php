@@ -16,7 +16,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $data = Food::all()->toArray();
+        $data = Food::orderBy('id', 'desc')->get();
 
         return Response::json($data, 200);
     }
@@ -38,15 +38,17 @@ class FoodController extends Controller
         // !SECTION rule validasi
         // SECTION validasi
         if ($validator->fails()) {
-            return Response::json($validator->errors(), 422);
+            $data = $validator->errors();
+            $code = 422;
         } else {
-            Food::created($request->all());
+            Food::create($request->all());
             $data = [
                 'message' => 'record created successfully'
             ];
+            $code = 200;
         }
         // !SECTION validasi
-        return Response::json($data, 200);
+        return Response::json($data, $code);
     }
 
     /**
@@ -90,12 +92,13 @@ class FoodController extends Controller
         if ($validator->fails()) {
             return Response::json($validator->errors(), 422);
         }elseif (Food::where('id', $id)->exists()) {
-            $food = Food::find($id);
-            $food->name = $request->name;
-            $food->jenis = $request->jenis;
-            $food->deskripsi = $request->deskripsi;
 
-            $food->save();
+            Food::where('id',$id)->update([
+                'name' => $request->name,
+                'jenis' => $request->jenis,
+                'deskripsi' => $request->deskripsi
+            ]);
+
             return Response::json([
                 'message' => 'record update successfully'
             ], 200);
@@ -115,8 +118,7 @@ class FoodController extends Controller
     public function destroy($id)
     {
         if (Food::where('id', $id)->exists()) {
-            $food = Food::find($id);
-            $food->delete();
+            Food::where('id',$id)->delete();
 
             return Response::json([
                 'message' => 'record delete successfully'

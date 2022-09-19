@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FoodsService } from './foods.service';
 
 @Component({
   selector: 'app-foods',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodsComponent implements OnInit {
 
-  constructor() { }
+  foods: any;
+  columTable = ['No', 'Name', 'Jenis', 'Deskripsi', 'aksi']
+  titlePage = 'List Foods'
+  no = 1;
+
+
+  constructor(private foodService: FoodsService) { }
+
 
   ngOnInit(): void {
+    this.showFoods();
+  }
+
+  showFoods(){
+    this.foods = this.foodService.getDataFoods().subscribe(food => {
+      this.foods = food;
+    })
   }
 
 }

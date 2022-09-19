@@ -13,14 +13,6 @@
         <mat-icon color="warn" aria-hidden="false" aria-label="Example home icon" fontIcon="list"></mat-icon>
         Foods
       </a>
-      <a mat-list-item routerLink="./Settings">
-        <mat-icon color="primary" aria-hidden="false" aria-label="Example home icon" fontIcon="settings"></mat-icon>
-        Settings
-      </a>
-      <a mat-list-item routerLink="./Logout">
-        <mat-icon color="warn" aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
-        Logout
-      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -36,5 +28,6 @@
       <span>foods</span>
     </mat-toolbar>
     <!-- Add Content Here -->
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
