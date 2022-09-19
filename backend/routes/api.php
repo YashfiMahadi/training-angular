@@ -22,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/foods', [FoodController::class, 'index']);
 Route::get('/foods/{id}/show', [FoodController::class, 'show']);
 Route::post('/foods/store', [FoodController::class, 'store']);
-Route::get('/foods/{id}/update', [FoodController::class, 'update']);
-Route::get('/foods/{id}/delete', [FoodController::class, 'delete']);
+Route::put('/foods/{id}/update', [FoodController::class, 'update']);
+Route::delete('/foods/{id}/delete', [FoodController::class, 'delete']);

@@ -17,6 +17,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FoodaddComponent } from './foodadd/foodadd.component';
 import { FormsModule } from '@angular/forms';
+import { FoodeditComponent } from './foodedit/foodedit.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,9 @@ const routes: Routes = [
       },
       {
         path:'add-foods',component:FoodaddComponent
+      },
+      {
+        path:'edit-foods/:id',component:FoodeditComponent
       }
     ]
   }
@@ -50,6 +54,7 @@ const routes: Routes = [
     FoodsComponent,
     SettingsComponent,
     FoodaddComponent,
+    FoodeditComponent
   ],
   imports: [
     CommonModule,

@@ -16,7 +16,11 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $data = Food::orderBy('id', 'desc')->get();
+        $foods = Food::orderBy('id', 'desc')->get();
+
+        $data = [
+            "data" => $foods
+        ];
 
         return Response::json($data, 200);
     }
